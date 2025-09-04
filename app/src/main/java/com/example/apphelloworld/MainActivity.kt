@@ -1,6 +1,10 @@
 package com.example.apphelloworld
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +20,24 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var email = findViewById<EditText>(R.id.editTextEmail)
+        var senha = findViewById<EditText>(R.id.editTextSenha)
+        var btnLogar = findViewById<Button>(R.id.buttonLogar)
+        var btnCadastrar = findViewById<Button>(R.id.buttonCadastrar)
+        btnLogar.setOnClickListener {
+
+            if(email.text.isEmpty()|| senha.text.isEmpty()){
+                Toast.makeText(this,"E-mail ou senha vazio", Toast.LENGTH_LONG).show()
+
+            }else{
+                // lógica para redirecionar para a tela de seguros.
+               var intent = Intent(this, SeguroActivity ::class.java)
+                startActivity(intent)
+            }
+        }
+btnCadastrar.setOnClickListener {
+    var intent = Intent(this, CadastroActivy::class.java)
+    startActivity (intent)
+}
     }
 }
